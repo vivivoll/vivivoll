@@ -1,99 +1,83 @@
 #include <iostream>
 using namespace std;
-
-//Функция ввода массива
-void InitArray(int *array, int size){
-    for(int i = 0; i < size; i++){
-        cin >> *(array + i);
+// Функция вывода массива В
+void InputArray_A(int* array_a, int size) {
+    for (int i = 0; i < size; i++) {
+        cin >> *(array_a + i);
+    }
+}
+// Функция вывода массива А
+void ShowArray_A(int* array_a, int size) {
+    for (int i = 0; i < size; i++) {
+        cout << *(array_a + i) << " ";
     }
 }
 
-//Функция вывода массива
-void ShowArray(int *array, int size){
-    for(int i = 0; i < size; i++){
-        cout << *(array + i) << " ";
-    }
-    cout << endl;
-}
-
-//Функция для проверки, есть ли элемент в другом массиве
-bool isInArray(int *array, int size, int value){
-    for(int i = 0; i < size; i++){
-        if(*(array + i) == value){
-            return true;
-        }
-    }
-    return false;
-}
-
-int main(){
+int main() {
     setlocale(LC_ALL, "ru");
-
-    //Размер массивов
+    // Размеры массивов
     const int size = 3;
     
-    // Выделение памяти
-    int* array_a = new int[size];
-    int* array_b = new int[size];
+    //Массив А до действий и new
+    int *array_a = new int[size];
+    //Массив А после действий и new 
+    int *result = new int[size];  
     
-    //Создание массивов
-    int *ptr_a = array_a;
-    int *ptr_b = array_b;
-
-    cout << "Введите массив A: ";
-    InitArray(array_a, size);
+    // Ввод массивов
+    cout << "Введите элементы массива A: ";
+    InputArray_A(array_a, size);
+    //Вывод массива А до действий
+    cout << "\nИсходный массив A: ";
+    ShowArray_A(array_a, size);
     cout << endl;
-
-    cout << "Введите массив B: ";
-    InitArray(array_b, size);
-    cout << endl;
-
-    cout << "Массив A: ";
-    ShowArray(array_a, size);
+    //Меню
+    int choose;
+    cout << "\nМеню:\n";
+    cout << "1. Удалить четные\n";
+    cout << "2. Удалить нечетные\n";
+    cout << "Ваш выбор: ";
+    cin >> choose;
     
-    cout << "Массив B: ";
-    ShowArray(array_b, size);
-
-    //Создание временного массива
-    int* temp_c = new int[size * 2];
-    int c_index = 0;
-
-    //Цикл: добавление элементов из B
-    for(int i = 0; i < size; i++){
-        if(!isInArray(temp_c, c_index, array_a[i])){
-            temp_c[c_index] = array_a[i];
-            c_index++;
+    //Счетчик
+    int count = 0;
+    
+    //switch case для действий, в зависимости от выбора в меню
+    switch (choose) {
+    case 1:  //Цикл для удаления нечетных
+        for (int i = 0; i < size; i++) {
+            if (array_a[i] % 2 != 0) {  
+                result[count] = array_a[i];
+                count++;
+            }
         }
-    }
-
-    //Цикл: добавление элементов из B
-    for(int i = 0; i < size; i++){
-        if(!isInArray(temp_c, c_index, array_b[i])){
-            temp_c[c_index] = array_b[i];
-            c_index++;
+        cout << "Результат: ";
+        for (int i = 0; i < count; i++) {
+        cout << result[i] << " ";
         }
+        cout << endl;
+        break;
+        
+    case 2:  //Цикл для удаления четных
+        for (int i = 0; i < size; i++) {
+            if (array_a[i] % 2 == 0) { 
+                result[count] = array_a[i];
+                count++;
+            }
+        }
+        cout << "Результат: ";
+        for (int i = 0; i < count; i++) {
+        cout << result[i] << " ";
+        }
+        cout << endl;
+        break;
     }
-
-    //Создание третьего массива
-    int* array_c = new int[c_index];
     
-    //Ввод элементов для третьего массива
-    for(int i = 0; i < c_index; i++){
-        array_c[i] = temp_c[i];
-    }
-
-    //Вывод третьего массива
-    cout << "Массив С: ";
-    for(int i = 0; i < c_index; i++){
-        cout << array_c[i] << " ";
-    }
-    cout << endl;
-
-    // Освобождение памяти
+    
+    
+    
+    //Освобождение памяти
     delete[] array_a;
-    delete[] array_b;
-    delete[] array_c;
-    delete[] temp_c;
-    
+    delete[] result;
+
     return 0;
 }
