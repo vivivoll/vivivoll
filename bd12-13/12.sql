@@ -1,0 +1,16 @@
+USE practical_work_db;
+CREATE TABLE IF NOT EXISTS log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message VARCHAR(255)
+);
+START TRANSACTION;
+INSERT INTO log (message) VALUES ('Шаг 1');
+SAVEPOINT step1;
+INSERT INTO log (message) VALUES ('Шаг 2');
+SELECT * FROM log;
+ROLLBACK TO step1;
+SELECT * FROM log;
+COMMIT;
+SELECT * FROM log;
+SHOW VARIABLES LIKE 'log_bin';
+SHOW BINARY LOGS;
