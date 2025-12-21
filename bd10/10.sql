@@ -1,0 +1,14 @@
+-- Информация о процедуре
+SHOW CREATE PROCEDURE CalcProcedure;
+
+-- Все процедуры в базе
+SHOW PROCEDURE STATUS WHERE Db = DATABASE();
+
+-- Параметры процедуры
+SELECT 
+    ROUTINE_NAME,
+    ROUTINE_TYPE,
+    CREATED,
+    LAST_ALTERED
+FROM INFORMATION_SCHEMA.ROUTINES 
+WHERE ROUTINE_SCHEMA = DATABASE();
