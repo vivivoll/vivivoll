@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Orders>
+  <Order id="1">
+    <customer>Иван Иванов</customer>
+    <items>
+      <item>
+        <name>Ноутбук</name>
+        <price>80000</price>
+        <quantity>1</quantity>
+      </item>
+      <item>
+        <name>Мышь</name>
+        <price>1200</price>
+        <quantity>2</quantity>
+      </item>
+    </items>
+  </Order>
+  <Order id="2">
+    <customer>Мария Сидорова</customer>
+    <items>
+      <item>
+        <name>Клавиатура</name>
+        <price>3500</price>
+        <quantity>1</quantity>
+      </item>
+    </items>
+  </Order>
+</Orders>
