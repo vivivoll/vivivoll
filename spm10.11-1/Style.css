@@ -1,0 +1,44 @@
+/* Общие настройки справочника */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Заголовки */
+h1 {
+    color: #1f4e79;
+    text-align: center;
+}
+
+h2 {
+    color: #2874a6;
+    border-bottom: 2px solid #2874a6;
+    padding-bottom: 5px;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #2874a6;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Общие правила */
+p {
+    line-height: 1.6;
+}
